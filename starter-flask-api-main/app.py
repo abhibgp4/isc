@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 
 app = Flask(__name__)
@@ -6,8 +6,8 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     message = 'Abhijeet'
-    #return render_template('index.html', message=message)
-    return 'Hello, world! from IIIT BHagalpur '
+    return render_template('index.html', message=message)
+    #return 'Hello, world! from IIIT BHagalpur '
 
 
 ''' 
