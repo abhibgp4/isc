@@ -11,8 +11,9 @@ app = Flask(__name)
 
 
 # Define a route for the home page that serves the HTML form
+
 @app.route('/')
-def index():
+def hello_world():
     return render_template('index.html')
 
 '''
