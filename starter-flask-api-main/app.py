@@ -23,3 +23,33 @@ s3 = boto3.client('s3', aws_access_key_id=S3_ACCESS_KEY, aws_secret_access_key=S
 @app.route('/')
 def hello_world1():
     return render_template('index.html')
+
+# Define a route to handle the image upload
+@app.route('/upload', methods=['POST'])
+def upload():
+    # Check if the 'image' file is included in the POST request
+    if 'image' not in request.files:
+        return jsonify({'success': False, 'message': 'No file part'})
+
+    image = request.files['image']  # Get the uploaded image
+
+    # Check if the filename is empty (no file selected)
+    if image.filename == '':
+        return jsonify({'success': False, 'message': 'No selected file'})
+
+    if image:
+        try:
+            # Generate a unique file name or use the original file name
+            filename = 'uploaded_image.jpg'  # You can modify this as needed
+
+            # Upload the image to the S3 bucket
+            s3.upload_fileobj(image, S3_BUCKET_NAME, filename)
+
+            return jsonify({'success': True, 'message': 'Image uploaded successfully'})
+        except NoCredentialsError:
+            return jsonify({'success': False, 'message': 'AWS credentials not available'})
+
+# Start the Flask application only if this script is executed (not imported)
+if __name__ == '__main__':
+    app.run(debug=True)
+
