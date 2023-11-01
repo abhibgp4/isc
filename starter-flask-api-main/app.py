@@ -9,6 +9,7 @@ app = Flask(__name)
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+'''
 # Define a route for the home page that serves the HTML form
 @app.route('/')
 def index():
@@ -37,3 +38,4 @@ def upload():
         return jsonify({'success': True, 'message': 'Image uploaded successfully'})
 
 # Start the Flask application only if this script is executed (not imported)
+'''
