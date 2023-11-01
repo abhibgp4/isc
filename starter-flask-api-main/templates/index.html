@@ -1,7 +1,44 @@
-<!doctype html>
-<title>Hello from Flask</title>
-{% if name %}
-  <h1>Hello {{ name }}!</h1>
-{% else %}
-  <h1>Hello, World! Abhijeet </h1>
-{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Upload</title>
+</head>
+<body>
+  <h1>Image Upload</h1>
+  <input type="file" id="imageInput" accept="image/*">
+  <button onclick="uploadImage()">Upload Image</button>
+  <p id="message"></p>
+
+  <script>
+    function uploadImage() {
+      const imageInput = document.getElementById('imageInput');
+      const message = document.getElementById('message');
+
+      if (!imageInput.files.length) {
+        message.textContent = 'Please select an image to upload.';
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('image', imageInput.files[0]);
+
+      fetch('/upload', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            message.textContent = 'Image uploaded successfully!';
+          } else {
+            message.textContent = 'Image upload failed. Please try again.';
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          message.textContent = 'An error occurred while uploading the image.';
+        });
+    }
+  </script>
+</body>
+</html>
