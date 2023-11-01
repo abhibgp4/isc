@@ -9,12 +9,13 @@ app = Flask(__name)
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-'''
+
 # Define a route for the home page that serves the HTML form
 @app.route('/')
 def index():
     return render_template('index.html')
 
+'''
 # Define a route to handle the image upload
 @app.route('/upload', methods=['POST'])
 def upload():
