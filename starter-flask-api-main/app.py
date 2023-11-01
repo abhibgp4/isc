@@ -37,5 +37,3 @@ def upload():
         return jsonify({'success': True, 'message': 'Image uploaded successfully'})
 
 # Start the Flask application only if this script is executed (not imported)
-if __name__ == '__main__':
-    app.run(debug=True)
