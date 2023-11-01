@@ -18,8 +18,8 @@ S3_ACCESS_KEY = 'ASIA2EX77VVORU6FZ3PI'  # Replace with your AWS access key
 S3_SECRET_KEY = 'XV+quUJkPh/j3uz0wB5I+ktG03jXnLCw8RD/k30l'  # Replace with your AWS secret key
 
 # Initialize an S3 client using the provided credentials
-#s3 = boto3.client('s3', aws_access_key_id=S3_ACCESS_KEY, aws_secret_access_key=S3_SECRET_KEY)
+s3 = boto3.client('s3', aws_access_key_id=S3_ACCESS_KEY, aws_secret_access_key=S3_SECRET_KEY)
 
 @app.route('/')
-def hello_world():
+def hello_world1():
     return render_template('index.html')
