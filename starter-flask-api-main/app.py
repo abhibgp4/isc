@@ -1,8 +1,11 @@
-from flask import Flask
-import os
+from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name)
 
 @app.route('/')
-def hello_world():
-    return 'Hello, world! from IIIT BHagalpur '
+def greeting():
+    name = "Abhijeet"  # You can change this to any name you want to display
+    return render_template('greeting.html', name=name)
+
+if __name__ == '__main__':
+    app.run()
