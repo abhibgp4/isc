@@ -6,8 +6,8 @@ import os
 app = Flask(__name)
 
 # Define the directory where uploaded images will be stored
-UPLOAD_FOLDER = 'uploads'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+#UPLOAD_FOLDER = 'uploads'
+#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 # Define a route for the home page that serves the HTML form
