@@ -22,6 +22,7 @@ s3 = boto3.client('s3', aws_access_key_id=S3_ACCESS_KEY, aws_secret_access_key=S
 
 # Google Drive API configuration
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
+
 SERVICE_ACCOUNT_FILE = 'cred.json'  # Replace with your JSON service account key file
 
 # Create a Google Drive API service
