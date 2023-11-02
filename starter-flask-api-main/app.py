@@ -48,7 +48,7 @@ SERVICE_ACCOUNT_KEY = {
 
 # Create a Google Drive API service using the defined credentials
 credentials = service_account.Credentials.from_service_account_info(SERVICE_ACCOUNT_KEY, scopes=SCOPES)
-drive_service = build('drive', 'v3', credentials=credentials)
+#drive_service = build('drive', 'v3', credentials=credentials)
 
 @app.route('/')
 def hello_world1():
