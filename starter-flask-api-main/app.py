@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+import boto3
+from botocore.exceptions import NoCredentialsError
 import os
 
 # Create a Flask web application
