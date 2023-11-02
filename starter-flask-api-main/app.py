@@ -22,32 +22,10 @@ s3 = boto3.client('s3', aws_access_key_id=S3_ACCESS_KEY, aws_secret_access_key=S
 
 # Google Drive API configuration
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
+SERVICE_ACCOUNT_FILE = 'cred.json'  # Replace with your JSON service account key file
 
-# Define your OAuth 2.0 client secret as a dictionary
-CLIENT_SECRET = {
-    "web": {
-        "client_id": "895193216310-hqjljil23spqpt2252vak7biekk0b55m.apps.googleusercontent.com",
-        "client_secret": "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",
-        "redirect_uris": [],
-    }
-}
-
-# Define your OAuth 2.0 service account key as a dictionary
-SERVICE_ACCOUNT_KEY = {
-    "type": "service_account",
-    "project_id": "balmy-mark-403906",
-    "private_key_id": "your-private-key-id",
-    "private_key": "-----BEGIN PRIVATE KEY-----\nYourPrivateKeyHere\n-----END PRIVATE KEY-----\n",
-    "client_email": "your-client-email",
-    "client_id": "your-client-id",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "your-client-x509-cert-url"
-}
-
-# Create a Google Drive API service using the defined credentials
-credentials = service_account.Credentials.from_service_account_info(SERVICE_ACCOUNT_KEY, scopes=SCOPES)
+# Create a Google Drive API service
+#credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 #drive_service = build('drive', 'v3', credentials=credentials)
 
 @app.route('/')
