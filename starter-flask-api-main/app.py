@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
 import os
-import boto3
-from botocore.exceptions import NoCredentialsError
 
 # Create a Flask web application
 app = Flask(__name__)
@@ -9,9 +9,6 @@ app = Flask(__name__)
 '''
 SET AWS_REGION=eu-west-2
 SET AWS_ACCESS_KEY_ID=ASIA2EX77VVO537OKKDI
-SET AWS_SECRET_ACCESS_KEY=BSdH1UkHXyD4Tqj93oLaWCk8HDNO5YWYOE8e3oDB
-SET AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEOH//////////wEaCmFwLXNvdXRoLTEiRjBEAiANeEPI+LX36DZLGt5zrk5iOo5G29g2PHJDJVJKMhJtSAIgEirm6zWRDuX1XNT2/EkArqHIzcwSr4QhJfuyI4WLQKwqqQIIGhAAGgw2OTczOTUyOTM1MzMiDKnOR8aPySb4VRp1wSqGAnm6n3FgF2WhpZLJG1OiwALzgVZRiEnJsCHnIjJnZozQXg8lSdroVdbI+71UFMeBKamwVinzTV1nuJfJg89XivimrDY1FyAhcPlQYsFtriJ7pk3UjcqKFatJePiAhk9RLysgnvF4q6hIpEfKw9bGfBAEvyDrW6uAbqi9K48/DEchRZL2eKzmWPpp9BTiebXvpa4nhioxkd9aGz3hkgA2ozRwCrSm9/hVdNFx1rFCR71eSiQoFlFKf0ee1i6Jf8OcaroW4CEAplkIwSX2Q0E6XGsE5HGMME1J0J6KAgd/Xu88MbhdUf4GCIb6sPt73+zLRyyjZtCRY60MSzESzCw8gLTdjrwHJ7EwmImKqgY6ngE1ymf7OLbmzxgVnE/Vxv64b7vEMsStUPLj2noik0HV++EeWzvlUqQISS8uunWoRc2lr+Cs6tmom9I/bzEE1GSVBmSJGldvNFTAiE8b+ZQ1hjMstuUxqOeTBMCjE/GHoIU/Z85LsyKtq9RkEydkq7c0+Qug7bVvYhqM6mzqOHS7iGlRIQq6UQeHY1HIvTmVJWsNUuLVBq5CeTcb8t2wAw==
-
 '''
 # AWS S3 configuration
 S3_BUCKET_NAME = 'cyclic-rich-ox-handbag-eu-west-2'  # Replace with your S3 bucket name
@@ -20,6 +17,7 @@ S3_SECRET_KEY = 'BSdH1UkHXyD4Tqj93oLaWCk8HDNO5YWYOE8e3oDB'  # Replace with your 
 
 # Initialize an S3 client using the provided credentials
 s3 = boto3.client('s3', aws_access_key_id=S3_ACCESS_KEY, aws_secret_access_key=S3_SECRET_KEY)
+
 
 @app.route('/')
 def hello_world1():
