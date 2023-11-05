@@ -10,7 +10,7 @@ def imgshow():
     image1 = cv2.imread('templates/IMG/detected_face.jpg')
     image2 = cv2.imread('templates/IMG/predicted_image.png')  # Replace with the path to your third image
 
-    # Create a figure with three subplots
+    # Create a figure with three subplots 3
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
     # Display the first image in the first subplot
