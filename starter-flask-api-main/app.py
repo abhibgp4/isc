@@ -60,12 +60,6 @@ def upload():
 
     # Call the process_image function from the emotion model module
     result = call_test_model_03.process_and_compare_faces(image)
-    imgshow()
+    #imgshow()
     # Return the result from the ML model
-    #return render_template('in2.html')
     return render_template('index.html')
-
-    
-if __name__ == '__main__':
-    app.run(debug=True)
-
